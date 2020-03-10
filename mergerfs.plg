@@ -47,6 +47,7 @@ create plugin README.md file
 <FILE Name="/boot/config/plugins/&name;/README.md">
 <INLINE>
 This plugin installs Mergerfs for Unraid in /bin/.
+mergerfs version: 2.29.0
 </INLINE>
 </FILE>
 
