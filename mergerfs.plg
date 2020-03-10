@@ -6,6 +6,7 @@
 <!ENTITY version    "2020.03.10">
 <!ENTITY pluginURL  "https://github.com/tonyuh/unraid-mergerfs/raw/master/mergerfs.plg">
 <!ENTITY MD5        "d31eef2db83e407d09d6dffae8600be7">
+<!ENTITY ReadmeMD5  "d31eef2db83e407d09d6dffae8600be7">
 ]>
 
 <PLUGIN	name="&name;"
@@ -40,6 +41,14 @@ Get the plugin bundle.
 <URL>"https://github.com/tonyuh/unraid-&name;/raw/master/&name;"</URL>
 <MD5>&MD5;</MD5>
 </FILE>
+<!--
+create plugin README.md file
+-->
+<FILE Name="/boot/config/plugins/&name;/README.md">
+<INLINE>
+This plugin installs Mergerfs for Unraid in /bin/.
+</INLINE>
+</FILE>
 
 <!--
 Install the plugin bundle.
@@ -48,7 +57,7 @@ Install the plugin bundle.
 <INLINE>
 # Install the plugin.
 mkdir /usr/local/emhttp/plugins/&name;/
-cp /boot/config/plugins/&name;/&name; /usr/local/emhttp/plugins/&name;/ 2>/dev/null
+cp /boot/config/plugins/&name;/* /usr/local/emhttp/plugins/&name;/ 2>/dev/null
 
 # Adjust plugin permissions.
 chmod 755 -R /usr/local/emhttp/plugins/&name; 2>/dev/null
