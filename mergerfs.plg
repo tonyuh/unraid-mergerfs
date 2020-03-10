@@ -37,7 +37,7 @@ rm -f -r /usr/local/emhttp/plugins/&name;/* 2>/dev/null
 Get the plugin bundle.
 -->
 <FILE Name="/boot/config/plugins/&name;/&name;">
-<URL>"https://github.com/tonyuh/&name;/raw/master/&name;"</URL>
+<URL>"https://github.com/tonyuh/unraid-&name;/raw/master/&name;"</URL>
 <MD5>&MD5;</MD5>
 </FILE>
 
