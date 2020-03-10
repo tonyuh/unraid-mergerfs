@@ -1,0 +1,89 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+<!ENTITY name       "mergerfs">
+<!ENTITY author     "tonyuh">
+<!ENTITY version    "2020.03.10">
+<!ENTITY pluginURL  "https://github.com/tonyuh/unraid-mergerfs/raw/master/mergerfs.plg">
+]>
+
+<PLUGIN	name="&name;"
+		author="&author;"
+		version="&version;"
+		pluginURL="&pluginURL;">
+
+<CHANGES>
+##&name;
+###&version;
+- Initial Unraid release using the following:
+  mergerfs version: 2.29.0
+  FUSE library version: 2.9.7-mergerfs_2.29.0
+  fusermount3 version: 3.9.0
+  using FUSE kernel interface version 7.31
+</CHANGES>
+
+<!--
+The 'pre-install' script.
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+# Remove emhttp files so we can re-install.
+rm -f -r /usr/local/emhttp/plugins/&name;/* 2>/dev/null
+</INLINE>
+</FILE>
+
+<!--
+Get the plugin bundle.
+-->
+<FILE Name="/boot/config/plugins/&name;/&name;.plg">
+<URL>"https://github.com/tonyuh/&name;/raw/master/&name;.plg"</URL>
+<MD5>&MD5;</MD5>
+</FILE>
+
+<!--
+Install the plugin bundle.
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+# Install the plugin.
+mkdir /usr/local/emhttp/plugins/&name;/
+cp /boot/config/plugins/&name;/&name;.plg /usr/local/emhttp/plugins/&name;/ 2>/dev/null
+
+# Adjust plugin permissions.
+chmod 755 -R /usr/local/emhttp/plugins/&name; 2>/dev/null
+</INLINE>
+</FILE>
+
+<!--
+The 'post-install' script.
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; is installed."
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+# Remove all plugin files.
+rm -f -r /usr/local/emhttp/plugins/&name; 2>/dev/null
+rm -f -r /boot/config/plugins/&name; 2>/dev/null
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been removed."
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+</PLUGIN>
