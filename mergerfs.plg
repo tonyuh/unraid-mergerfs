@@ -47,6 +47,7 @@ Install the plugin bundle.
 <FILE Run="/bin/bash">
 <INLINE>
 # Install the plugin.
+mkdir /usr/local/emhttp/plugins/&name;/
 cp /boot/config/plugins/&name;/&name; /usr/local/emhttp/plugins/&name;/ 2>/dev/null
 
 # Adjust plugin permissions.
