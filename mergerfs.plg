@@ -62,6 +62,7 @@ cp /boot/config/plugins/&name;/* /usr/local/emhttp/plugins/&name;/ 2>/dev/null
 
 # Adjust plugin permissions.
 chmod 755 -R /usr/local/emhttp/plugins/&name; 2>/dev/null
+chmod 644 -R /usr/local/emhttp/plugins/&name;/*.md 2>/dev/null
 </INLINE>
 </FILE>
 
